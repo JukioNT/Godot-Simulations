@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu6ljbac7vrsa"]
+
+[ext_resource type="Script" path="res://1st Simulation/Scripts/body.gd" id="1_opk2t"]
+[ext_resource type="Texture2D" uid="uid://176kf2yaf6bo" path="res://1st Simulation/Sprites/Bala.png" id="2_u4u0n"]
+[ext_resource type="PackedScene" uid="uid://dnnipi0oo3syk" path="res://1st Simulation/Prefabs/trail_2d.tscn" id="3_xywy0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_abrbg"]
+radius = 2.0
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_opk2t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7.15256e-07, 7.15256e-07)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("2_u4u0n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_abrbg")
+
+[node name="Trail2D" parent="." instance=ExtResource("3_xywy0")]
+width = 3.0
+width_curve = null
+default_color = Color(0, 1, 0, 0.45098)
+length = 8000
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

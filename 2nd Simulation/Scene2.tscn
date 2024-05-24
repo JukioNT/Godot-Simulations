@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfqkjotmm8i6w"]
+
+[ext_resource type="PackedScene" uid="uid://bdxr7ows8l0dd" path="res://2nd Simulation/Prefabs/body.tscn" id="1_c1r1b"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.3, 0.3)
+
+[node name="Body" parent="." instance=ExtResource("1_c1r1b")]
+position = Vector2(600, 0)
+vSpeed = -20
+trailColor = Color(0, 0, 1, 0.572549)
+trailLength = 8000000000000
+
+[node name="Body2" parent="." instance=ExtResource("1_c1r1b")]
+position = Vector2(0, 600)
+hSpeed = 20
+trailColor = Color(1, 0, 0, 0.572549)
+trailLength = 8000000000000
+
+[node name="Body3" parent="." instance=ExtResource("1_c1r1b")]
+position = Vector2(-600, 0)
+vSpeed = 20
+trailColor = Color(0, 1, 0, 0.572549)
+trailLength = 8000000000000
+
+[node name="Body4" parent="." instance=ExtResource("1_c1r1b")]
+position = Vector2(0, -600)
+hSpeed = -20
+trailColor = Color(1, 0.312067, 0.993202, 0.572549)
+trailLength = 8000000000000
