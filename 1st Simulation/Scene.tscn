@@ -1,7 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://ueejb6ijmdcr"]
+[gd_scene load_steps=5 format=3 uid="uid://ueejb6ijmdcr"]
 
-[ext_resource type="Texture2D" uid="uid://dmthf7kw5rdgx" path="res://1st Simulation/Sprites/Estrelas_Nuvem_de_Magalhães.jpeg" id="1_6kexf"]
-[ext_resource type="Texture2D" uid="uid://cl2dqjhbmulfr" path="res://1st Simulation/Sprites/Terra.png" id="1_6ksy8"]
 [ext_resource type="Script" path="res://1st Simulation/Scripts/ControlCamera.gd" id="2_lfkhe"]
 [ext_resource type="PackedScene" uid="uid://bu6ljbac7vrsa" path="res://1st Simulation/Prefabs/bullet.tscn" id="3_3wlm8"]
 [ext_resource type="Script" path="res://1st Simulation/Scripts/resize.gd" id="3_nf8np"]
@@ -15,7 +13,6 @@ radius = 52.0096
 script = ExtResource("2_lfkhe")
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
-texture = ExtResource("1_6kexf")
 script = ExtResource("3_nf8np")
 
 [node name="Earth" type="Area2D" parent="."]
@@ -25,7 +22,6 @@ shape = SubResource("CircleShape2D_3lt1b")
 
 [node name="Terra2" type="Sprite2D" parent="Earth"]
 scale = Vector2(0.183007, 0.183007)
-texture = ExtResource("1_6ksy8")
 
 [node name="Bullet" parent="." instance=ExtResource("3_3wlm8")]
 position = Vector2(0, -150)

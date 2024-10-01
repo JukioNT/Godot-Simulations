@@ -1,11 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdxr7ows8l0dd"]
+[gd_scene load_steps=10 format=3 uid="uid://bdxr7ows8l0dd"]
 
 [ext_resource type="Texture2D" uid="uid://c8iis1bfiuk2h" path="res://2nd Simulation/Sprites/Body.png" id="1_0ebpo"]
 [ext_resource type="Script" path="res://2nd Simulation/Scripts/body.gd" id="1_jnp74"]
 [ext_resource type="PackedScene" uid="uid://dnnipi0oo3syk" path="res://1st Simulation/Prefabs/trail_2d.tscn" id="3_ao5qa"]
+[ext_resource type="Script" path="res://2nd Simulation/Scripts/Labels/labelX.gd" id="4_mk6mm"]
+[ext_resource type="Script" path="res://2nd Simulation/Scripts/Labels/labelY.gd" id="5_pskut"]
+[ext_resource type="Script" path="res://2nd Simulation/Scripts/Labels/labelHS.gd" id="6_dagw7"]
+[ext_resource type="Script" path="res://2nd Simulation/Scripts/Labels/labelVS.gd" id="6_ps8hg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_01wq5"]
 radius = 51.0392
+
+[sub_resource type="GDScript" id="GDScript_yvvmp"]
+script/source = "extends Node
+
+var camera
+var boxContainer
+var size
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	camera = get_node(\"/root/Node2D/Camera2D\")
+	boxContainer = get_node(\".\")
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	
+	size = 0.4 / camera.GetZoom().x
+	
+	boxContainer.scale=Vector2(size,size)
+"
 
 [node name="Body" type="Area2D"]
 script = ExtResource("1_jnp74")
@@ -23,3 +47,46 @@ width = 8.0
 width_curve = null
 default_color = Color(0, 0, 0, 0)
 length = 8000
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -182.0
+offset_right = 179.0
+offset_bottom = -2.0
+grow_vertical = 0
+pivot_offset = Vector2(0, 180)
+script = SubResource("GDScript_yvvmp")
+
+[node name="X" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "X: 000.000"
+vertical_alignment = 2
+justification_flags = 0
+script = ExtResource("4_mk6mm")
+
+[node name="Y" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Y: 000.000"
+vertical_alignment = 2
+script = ExtResource("5_pskut")
+
+[node name="VSpeed" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "VS: 000.000"
+vertical_alignment = 2
+script = ExtResource("6_ps8hg")
+
+[node name="HSpeed" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "HS: 000.000"
+vertical_alignment = 2
+script = ExtResource("6_dagw7")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

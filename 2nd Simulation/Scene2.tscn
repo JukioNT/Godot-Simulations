@@ -1,32 +1,74 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfqkjotmm8i6w"]
+[gd_scene load_steps=7 format=3 uid="uid://dfqkjotmm8i6w"]
 
+[ext_resource type="Script" path="res://2nd Simulation/Scripts/camera.gd" id="1_3nqfh"]
 [ext_resource type="PackedScene" uid="uid://bdxr7ows8l0dd" path="res://2nd Simulation/Prefabs/body.tscn" id="1_c1r1b"]
+[ext_resource type="Texture2D" uid="uid://c0lnbtq2ua482" path="res://2nd Simulation/Sprites/icons8-pausa-100.png" id="4_l20iy"]
+[ext_resource type="Script" path="res://2nd Simulation/Scripts/button.gd" id="5_hiob3"]
+[ext_resource type="Texture2D" uid="uid://r4pnvvclb0om" path="res://2nd Simulation/Sprites/icons8-reproduzir-100.png" id="5_ia24d"]
+[ext_resource type="Texture2D" uid="uid://beoquul0evynx" path="res://2nd Simulation/Sprites/icons8-avanço-rápido-100.png" id="6_03wc5"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.3, 0.3)
+script = ExtResource("1_3nqfh")
 
 [node name="Body" parent="." instance=ExtResource("1_c1r1b")]
 position = Vector2(600, 0)
-vSpeed = -20
 trailColor = Color(0, 0, 1, 0.572549)
-trailLength = 8000000000000
+trailLength = 500
 
 [node name="Body2" parent="." instance=ExtResource("1_c1r1b")]
-position = Vector2(0, 600)
-hSpeed = 20
+position = Vector2(438, 0)
 trailColor = Color(1, 0, 0, 0.572549)
-trailLength = 8000000000000
+trailLength = 500
 
-[node name="Body3" parent="." instance=ExtResource("1_c1r1b")]
-position = Vector2(-600, 0)
-vSpeed = 20
-trailColor = Color(0, 1, 0, 0.572549)
-trailLength = 8000000000000
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Body4" parent="." instance=ExtResource("1_c1r1b")]
-position = Vector2(0, -600)
-hSpeed = -20
-trailColor = Color(1, 0.312067, 0.993202, 0.572549)
-trailLength = 8000000000000
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1151.0
+offset_bottom = 652.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CheckButton" type="CheckButton" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 44.0
+offset_bottom = 24.0
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseButton" type="TextureButton" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0477845
+anchor_top = 0.00306748
+anchor_right = -0.0477845
+anchor_bottom = 0.00306748
+offset_left = 1097.0
+offset_top = -2.0
+offset_right = 1197.0
+offset_bottom = 98.0
+scale = Vector2(0.5, 0.5)
+toggle_mode = true
+texture_normal = ExtResource("4_l20iy")
+texture_pressed = ExtResource("5_ia24d")
+script = ExtResource("5_hiob3")
+metadata/_edit_use_anchors_ = true
+
+[node name="SpeedButton" type="TextureButton" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.478018
+anchor_top = 0.00436599
+anchor_right = -0.478018
+anchor_bottom = 0.00436599
+offset_left = 1642.2
+offset_top = -2.84663
+offset_right = 1742.2
+offset_bottom = 97.1534
+scale = Vector2(0.5, 0.5)
+toggle_mode = true
+texture_normal = ExtResource("6_03wc5")
+script = ExtResource("5_hiob3")
+metadata/_edit_use_anchors_ = true
